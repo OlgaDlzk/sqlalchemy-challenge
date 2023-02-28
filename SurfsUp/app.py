@@ -117,37 +117,27 @@ def stats(start=None, end=None):
     # Select statement
     sel = [func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)]
 
-    if not end:
-        # start = dt.datetime.strptime(start, "%m/%d/%Y")
-        # # calculate TMIN, TAVG, TMAX for dates greater than start
-        # results = session.query(*sel).\
-        #     filter(Measurement.date >= start).all()
+     # calculate TMIN, TAVG, TMAX with start and stop
+    if end != None:
+        temps = session.query(*sel).\
+            filter(Measurement.date >= start).\
+            filter(Measurement.date <= end).all()
+        session.close()
         # # Unravel results into a 1D array and convert to a list
-        # temps = list(np.ravel(results))
-        # return jsonify(temps)
-
-        start = dt.datetime.strptime(start, "%m%d%Y")
-        results = session.query(*sel).\
+        temps = list(np.ravel(temps))
+        return jsonify(temps)
+    
+     # calculate TMIN, TAVG, TMAX with just start
+    else:
+    
+        temps = session.query(*sel).\
             filter(Measurement.date >= start).all()
 
         session.close()
 
-        temps = list(np.ravel(results))
-        return ## WORK NEEDED HERE ##
+        temps = list(np.ravel(temps))
+        return jsonify(temps)
 
-    # calculate TMIN, TAVG, TMAX with start and stop
-    ## WORK NEEDED HERE ##
-
-    results = session.query(*sel).\
-        filter(Measurement.date >= start).\
-        filter(Measurement.date <= end).all()
-
-    session.close()
-
-    # Unravel results into a 1D array and convert to a list
-    temps = list(np.ravel(results))
-    return ## WORK NEEDED HERE ##
-
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
