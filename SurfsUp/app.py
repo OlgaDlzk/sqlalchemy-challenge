@@ -47,13 +47,11 @@ def welcome():
         f'<ul><a href=http://127.0.0.1:5000/api/v1.0/tobs>'
         f'http://127.0.0.1:5000/api/v1.0/tobs</a></ul><br/>'
         f'<ul><a href=http://127.0.0.1:5000/api/v1.0/temp/<start>'
-        f'http://127.0.0.1:5000/api/v1.0/temp/<start></a></ul><br/>'
+        f'http://127.0.0.1:5000/api/v1.0/temp/start</a></ul><br/>'
         f'<ul><a href=http://127.0.0.1:5000/api/v1.0/temp/<start>/<end>'
-        f'http://127.0.0.1:5000/api/v1.0/temp/<start>/<end></a></ul><br/>'
+        f'http://127.0.0.1:5000/api/v1.0/temp/start/end</a></ul><br/>'
 
 )
-
-
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
