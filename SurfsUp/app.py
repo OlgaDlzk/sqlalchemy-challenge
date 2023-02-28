@@ -38,15 +38,20 @@ app = Flask(__name__)
 @app.route('/')
 def welcome():
     return (
-        f'<h1>Welcome to the Climate App!</h1><br/>'
-        f'Available Routes:<br/>'
-        f'<br/>/api/v1.0/precipitation<br/>'
-        f'<br/>/api/v1.0/stations<br/>'
-        f'<br/>/api/v1.0/tobs<br/>'
-        f'<br/>/api/v1.0/temp/<start><br/>'
-        f'<br/>/api/v1.0/temp/<start>/<end><br/>'
+        f'<h1><center>Welcome to the Climate App!</center></h1>'
+        f'<h2><center>Available Routes:</center><h2>'
+        f'<ol><ul><a href=http://127.0.0.1:5000/api/v1.0/precipitation>'
+        f'http://127.0.0.1:5000/api/v1.0/precipitation</a></ul><br/>'
+        f'<ul><a href=http://127.0.0.1:5000/api/v1.0/stations>'
+        f'http://127.0.0.1:5000/api/v1.0/stations</a></ul><br/>'
+        f'<ul><a href=http://127.0.0.1:5000/api/v1.0/tobs>'
+        f'http://127.0.0.1:5000/api/v1.0/tobs</a></ul><br/>'
+        f'<ul><a href=http://127.0.0.1:5000/api/v1.0/temp/<start>'
+        f'http://127.0.0.1:5000/api/v1.0/temp/<start></a></ul><br/>'
+        f'<ul><a href=http://127.0.0.1:5000/api/v1.0/temp/<start>/<end>'
+        f'http://127.0.0.1:5000/api/v1.0/temp/<start>/<end></a></ul><br/>'
 
-    )
+)
 
 
 
