@@ -40,11 +40,11 @@ def welcome():
     return (
         f'<h1>Welcome to the Climate App!</h1><br/>'
         f'Available Routes:<br/>'
-        f'/api/v1.0/precipitation'
-        f'/api/v1.0/stations'
-        f'/api/v1.0/tobs'
-        f'/api/v1.0/temp/<start>'
-        f'/api/v1.0/temp/<start>/<end>'
+        f'<br/>/api/v1.0/precipitation<br/>'
+        f'<br/>/api/v1.0/stations<br/>'
+        f'<br/>/api/v1.0/tobs<br/>'
+        f'<br/>/api/v1.0/temp/<start><br/>'
+        f'<br/>/api/v1.0/temp/<start>/<end><br/>'
 
     )
 
@@ -61,9 +61,15 @@ def precipitation():
         filter(Measurement.date >= prev_year).all()
 
     session.close()
+
+    prec_dict = {}
+    for i in precipitation:
+        prec_dict[i[0]] = i[1]
+    
+    
     # Dict with date as the key and prcp as the value
     ## WORK NEEDED HERE ##
-    return ## WORK NEEDED HERE ##
+    return jsonify(prec_dict)
 
 
 @app.route("/api/v1.0/stations")
@@ -75,7 +81,8 @@ def stations():
 
     # Unravel results into a 1D array and convert to a list
     stations = list(np.ravel(results))
-    return ## WORK NEEDED HERE ##
+    print(stations)
+    return jsonify(stations)
 
 
 @app.route("/api/v1.0/tobs")
@@ -138,4 +145,4 @@ def stats(start=None, end=None):
 
 
 if __name__ == '__main__':
-    ## WORK NEEDED HERE ##
+    app.run(debug=True)
