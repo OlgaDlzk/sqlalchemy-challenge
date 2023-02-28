@@ -11,7 +11,7 @@ from flask import Flask, jsonify
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///Resources/hawaii.sqlite")
+engine = create_engine("sqlite:///resources/hawaii.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -29,15 +29,25 @@ session = Session(engine)
 # Flask Setup
 #################################################
 ## WORK NEEDED HERE ##
-
+app = Flask(__name__)
 
 #################################################
 # Flask Routes
 #################################################
 
-@app.route("/")
+@app.route('/')
 def welcome():
-## WORK NEEDED HERE ##
+    return (
+        f'<h1>Welcome to the Climate App!</h1><br/>'
+        f'Available Routes:<br/>'
+        f'/api/v1.0/precipitation'
+        f'/api/v1.0/stations'
+        f'/api/v1.0/tobs'
+        f'/api/v1.0/temp/<start>'
+        f'/api/v1.0/temp/<start>/<end>'
+
+    )
+
 
 
 @app.route("/api/v1.0/precipitation")
